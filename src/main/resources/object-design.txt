@@ -1,0 +1,16 @@
+ledger:
+	String userID - HASH KEY
+	HashMap<Integer, Income> incomes
+	HashMap<Integer, Expense> expenses
+	double totalBalanceBeforeExpense
+	double totalBalanceAfterExpense
+Income:
+	String incomeSource
+	double amount
+	String dueDate
+	String notes
+Expense:
+	String expenseName
+	double amount
+	String dueDate
+	String notes

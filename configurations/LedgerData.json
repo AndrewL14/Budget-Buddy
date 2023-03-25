@@ -1,0 +1,55 @@
+{
+  "ledgers": [
+    {
+      "PutRequest": {
+        "Item": {
+          "userId": {"S": "exampleUserId"},
+          "incomes": {
+            "M": {
+              "gfdh-fd34-f73g7f2": {
+                "M": {
+                  "amount": {"N": "1000"},
+                  "incomeSource": {"S": "Salary"},
+                  "dueDate": {"S": "2022-04-01"},
+                  "note": {"S": "Monthly income"}
+                }
+              },
+              "gfdh-u62f-f73g7f2": {
+                "M": {
+                  "amount": {"N": "500"},
+                  "incomeSource": {"S": "Freelance work"},
+                  "dueDate": {"S": "2022-04-15"},
+                  "note": {"S": "Extra income"}
+                }
+              }
+            }
+          },
+          "expenses": {
+            "M": {
+              "f735-fd34-f73g7f2": {
+                "M": {
+                  "amount": {"N": "800"},
+                  "expenseName": {"S": "Rent"},
+                  "dueDate": {"S": "2022-04-05"},
+                  "note": {"S": "Monthly rent payment"},
+                  "paid": {"BOOL": true}
+                }
+              },
+              "g48f-fd34-f73g7f2": {
+                "M": {
+                  "amount": {"N": "50"},
+                  "expenseName": {"S": "Internet"},
+                  "dueDate": {"S": "2022-04-10"},
+                  "note": {"S": "Monthly internet bill"},
+                  "paid": {"BOOL": false}
+                }
+              }
+            }
+          },
+          "totalBalanceBeforeExpense": {"N": "1500"},
+          "totalBalanceAfterExpense": {"N": "700"}
+        }
+      }
+    }
+  ]
+}
