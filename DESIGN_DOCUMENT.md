@@ -235,7 +235,7 @@ Note: for both incomes and expenses keys are their recordIds, the recordIds will
 * incomeSource (String)
 * dueDate (String)
 * note (String)
-* paid (boolean)
+* given (boolean)
 
 ### Expense
 * expenseName (String)
