@@ -3,11 +3,11 @@
     {
       "PutRequest": {
         "Item": {
-          "userId": {"S": "exampleUserId"},
+          "ledgerId": {"S": "hjd2-3fds-2cdsf"},
           "incomes": {
             "M": {
               "gfdh-fd34-f73g7f2": {
-                "M": {
+                "income": {
                   "amount": {"N": "1000"},
                   "incomeSource": {"S": "Salary"},
                   "dueDate": {"S": "2022-04-01"},
@@ -15,7 +15,7 @@
                 }
               },
               "gfdh-u62f-f73g7f2": {
-                "M": {
+                "income": {
                   "amount": {"N": "500"},
                   "incomeSource": {"S": "Freelance work"},
                   "dueDate": {"S": "2022-04-15"},
@@ -27,7 +27,7 @@
           "expenses": {
             "M": {
               "f735-fd34-f73g7f2": {
-                "M": {
+                "expense": {
                   "amount": {"N": "800"},
                   "expenseName": {"S": "Rent"},
                   "dueDate": {"S": "2022-04-05"},
@@ -36,7 +36,7 @@
                 }
               },
               "g48f-fd34-f73g7f2": {
-                "M": {
+                "expense": {
                   "amount": {"N": "50"},
                   "expenseName": {"S": "Internet"},
                   "dueDate": {"S": "2022-04-10"},
@@ -46,6 +46,8 @@
               }
             }
           },
+          "firstName": {"S":  "dave"},
+          "lastName": {"S":  "mathews"},
           "totalBalanceBeforeExpense": {"N": "1500"},
           "totalBalanceAfterExpense": {"N": "700"}
         }

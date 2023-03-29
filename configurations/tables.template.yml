@@ -3,12 +3,12 @@ Resources:
     Type: 'AWS::DynamoDB::Table'
     Properties:
       AttributeDefinitions:
-        - AttributeName: 'userId'
+        - AttributeName: 'ledgerId'
           AttributeType: 'S'
         - AttributeName: 'recordId'
           AttributeType: 'S'
       KeySchema:
-        - AttributeName: 'userId'
+        - AttributeName: 'ledgerId'
           KeyType: 'HASH'
         - AttributeName: 'recordId'
           KeyType: 'RANGE'
