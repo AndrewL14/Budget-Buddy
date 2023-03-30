@@ -225,6 +225,7 @@ Note: for both incomes and expenses keys are their recordIds, the recordIds will
 * ledgerId (String, partition key)
 * incomes (HashMap, Maps key is sortKey)
 * expenses (HashMap, Maps key is sortKey)
+* recordIds (Set, sortKey, stores the expenses and incomes ids to be accessible by dynamoDB)
 * firstName (String, attribute)
 * lastName (String, attribute)
 * totalBalanceBeforeExpense (Number attribute)
