@@ -1,4 +1,4 @@
-package com.budgeteer.budgetBuddy.activities.dependencies;
+package com.budgeteer.budgetBuddy.dependencies;
 
 public class MapperModule {
 }
