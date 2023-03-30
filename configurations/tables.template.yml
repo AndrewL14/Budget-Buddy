@@ -6,7 +6,7 @@ Resources:
         - AttributeName: 'ledgerId'
           AttributeType: 'S'
         - AttributeName: 'recordId'
-          AttributeType: 'S'
+          AttributeType: 'SS'
       KeySchema:
         - AttributeName: 'ledgerId'
           KeyType: 'HASH'
