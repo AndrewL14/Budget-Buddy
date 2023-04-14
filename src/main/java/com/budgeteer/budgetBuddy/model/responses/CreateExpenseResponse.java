@@ -11,6 +11,10 @@ public class CreateExpenseResponse {
         this.model = model;
     }
 
+    public CreateExpenseResponse(Builder builder) {
+        this.model = builder.model;
+    }
+
     public ExpenseModel getModel() {
         return model;
     }
@@ -37,5 +41,22 @@ public class CreateExpenseResponse {
         return "CreateExpenseResponse{" +
                 "model=" + model +
                 '}';
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private ExpenseModel model;
+
+        public Builder withModel(ExpenseModel model) {
+            this.model = model;
+            return this;
+        }
+
+        public CreateExpenseResponse build() {
+            return new CreateExpenseResponse(this);
+        }
     }
 }

@@ -6,14 +6,25 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 public class CreateExpenseRequest {
+    private String ledgerId;
     private String expenseName;
     private String dueDate;
     private BigDecimal amount;
     private boolean paid;
     private String notes;
 
-    public CreateExpenseRequest(String expenseName , String dueDate
+    public CreateExpenseRequest(String ledgerId , String expenseName , String dueDate
             ,BigDecimal amount , boolean paid , String notes) {
+        this.ledgerId = ledgerId;
+        this.expenseName = expenseName;
+        this.dueDate = dueDate;
+        this.amount = amount;
+        this.paid = paid;
+        this.notes = notes;
+    }
+
+    public CreateExpenseRequest(String expenseName , String dueDate
+            , BigDecimal amount , boolean paid , String notes) {
         this.expenseName = expenseName;
         this.dueDate = dueDate;
         this.amount = amount;
@@ -22,11 +33,20 @@ public class CreateExpenseRequest {
     }
 
     public CreateExpenseRequest(Builder builder) {
+        this.ledgerId = builder.ledgerId;
         this.expenseName = builder.expenseName;
         this.dueDate = builder.dueDate;
         this.amount = builder.amount;
         this.paid = builder.paid;
         this.notes = builder.notes;
+    }
+
+    public String getLedgerId() {
+        return ledgerId;
+    }
+
+    public void setLedgerId(String ledgerId) {
+        this.ledgerId = ledgerId;
     }
 
     public String getExpenseName() {
@@ -74,20 +94,22 @@ public class CreateExpenseRequest {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CreateExpenseRequest that = (CreateExpenseRequest) o;
-        return paid == that.paid && expenseName.equals(that.expenseName)
-                && dueDate.equals(that.dueDate) && amount.equals(that.amount)
+        return paid == that.paid && ledgerId.equals(that.ledgerId)
+                && Objects.equals(expenseName , that.expenseName)
+                && Objects.equals(dueDate , that.dueDate) && Objects.equals(amount , that.amount)
                 && Objects.equals(notes , that.notes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(expenseName , dueDate , amount , paid , notes);
+        return Objects.hash(ledgerId , expenseName , dueDate , amount , paid , notes);
     }
 
     @Override
     public String toString() {
         return "CreateExpenseRequest{" +
-                "expenseName='" + expenseName + '\'' +
+                "ledgerId='" + ledgerId + '\'' +
+                ", expenseName='" + expenseName + '\'' +
                 ", dueDate='" + dueDate + '\'' +
                 ", amount=" + amount +
                 ", paid=" + paid +
@@ -100,11 +122,17 @@ public class CreateExpenseRequest {
     }
 
     public static class Builder {
+        private String ledgerId;
         private String expenseName;
         private String dueDate;
         private BigDecimal amount;
         private boolean paid;
         private String notes;
+
+        public Builder withLedgerId(String ledgerId) {
+            this.ledgerId = ledgerId;
+            return this;
+        }
 
         public Builder withIncomeSource(String expenseName) {
             this.expenseName = expenseName;

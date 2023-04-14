@@ -91,7 +91,7 @@ public class ExpenseModel {
                 '}';
     }
 
-    public Builder builder() {
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -102,7 +102,7 @@ public class ExpenseModel {
         private boolean paid;
         private String notes;
 
-        public Builder withIncomeSource(String expenseName) {
+        public Builder withExpenseName(String expenseName) {
             this.expenseName = expenseName;
             return this;
         }
@@ -117,7 +117,7 @@ public class ExpenseModel {
             return this;
         }
 
-        public Builder withGiven(boolean paid) {
+        public Builder withPaid(boolean paid) {
             this.paid = paid;
             return this;
         }
