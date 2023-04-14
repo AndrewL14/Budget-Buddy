@@ -9,45 +9,31 @@ import java.util.Objects;
 import java.util.Set;
 
 public class LedgerModel {
-    private String ledgerId;
     private String firstName;
     private String lastName;
     private HashMap<String, Income> incomes;
     private HashMap<String, Expense> expenses;
-    private Set<String> recordIds;
     private BigDecimal totalBalanceBeforeExpense;
     private BigDecimal totalBalanceAfterExpense;
 
-    public LedgerModel(String ledgerId, String firstName, String lastName,
+    public LedgerModel(String firstName, String lastName,
                        HashMap<String, Income> incomes, HashMap<String, Expense> expenses,
-                       Set<String> recordIds, BigDecimal totalBalanceBeforeExpense, BigDecimal totalBalanceAfterExpense) {
-        this.ledgerId = ledgerId;
+                       BigDecimal totalBalanceBeforeExpense, BigDecimal totalBalanceAfterExpense) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.incomes = incomes;
         this.expenses = expenses;
-        this.recordIds = recordIds;
         this.totalBalanceBeforeExpense = totalBalanceBeforeExpense;
         this.totalBalanceAfterExpense = totalBalanceAfterExpense;
     }
 
     public LedgerModel(Builder builder) {
-        this.ledgerId = builder.ledgerId;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
         this.incomes = builder.incomes;
         this.expenses = builder.expenses;
-        this.recordIds = builder.recordIds;
         this.totalBalanceBeforeExpense = builder.totalBalanceBeforeExpense;
         this.totalBalanceAfterExpense = builder.totalBalanceAfterExpense;
-    }
-
-    public String getLedgerId() {
-        return ledgerId;
-    }
-
-    public void setLedgerId(String ledgerId) {
-        this.ledgerId = ledgerId;
     }
 
     public String getFirstName() {
@@ -82,14 +68,6 @@ public class LedgerModel {
         this.expenses = expenses;
     }
 
-    public Set<String> getRecordIds() {
-        return recordIds;
-    }
-
-    public void setRecordIds(Set<String> recordIds) {
-        this.recordIds = recordIds;
-    }
-
     public BigDecimal getTotalBalanceBeforeExpense() {
         return totalBalanceBeforeExpense;
     }
@@ -111,31 +89,16 @@ public class LedgerModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LedgerModel that = (LedgerModel) o;
-        return ledgerId.equals(that.ledgerId) && firstName.equals(that.firstName)
-                && lastName.equals(that.lastName) && incomes.equals(that.incomes)
-                && expenses.equals(that.expenses) && recordIds.equals(that.recordIds)
-                && totalBalanceBeforeExpense.equals(that.totalBalanceBeforeExpense)
-                && totalBalanceAfterExpense.equals(that.totalBalanceAfterExpense);
+        return firstName.equals(that.firstName) && lastName.equals(that.lastName)
+                && Objects.equals(incomes , that.incomes) && Objects.equals(expenses , that.expenses)
+                && Objects.equals(totalBalanceBeforeExpense , that.totalBalanceBeforeExpense)
+                && Objects.equals(totalBalanceAfterExpense , that.totalBalanceAfterExpense);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ledgerId , firstName , lastName , incomes,
-                expenses , recordIds , totalBalanceBeforeExpense , totalBalanceAfterExpense);
-    }
-
-    @Override
-    public String toString() {
-        return "LedgerModel{" +
-                "ledgerId='" + ledgerId + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", incomes=" + incomes +
-                ", expenses=" + expenses +
-                ", recordIds=" + recordIds +
-                ", totalBalanceBeforeExpense=" + totalBalanceBeforeExpense +
-                ", totalBalanceAfterExpense=" + totalBalanceAfterExpense +
-                '}';
+        return Objects.hash(firstName , lastName ,incomes
+                ,expenses , totalBalanceBeforeExpense , totalBalanceAfterExpense);
     }
 
     public Builder builder() {
@@ -143,19 +106,12 @@ public class LedgerModel {
     }
 
     public static class Builder {
-        private String ledgerId;
         private String firstName;
         private String lastName;
         private HashMap<String, Income> incomes;
         private HashMap<String, Expense> expenses;
-        private Set<String> recordIds;
         private BigDecimal totalBalanceBeforeExpense;
         private BigDecimal totalBalanceAfterExpense;
-
-        public Builder withLedgerId(String ledgerId) {
-            this.ledgerId = ledgerId;
-            return this;
-        }
 
         public Builder withFirstName(String firstName) {
             this.firstName = firstName;
@@ -174,11 +130,6 @@ public class LedgerModel {
 
         public Builder withExpenses(HashMap<String, Expense> expenses) {
             this.expenses = expenses;
-            return this;
-        }
-
-        public Builder withRecordIds(Set<String> recordIds) {
-            this.recordIds = recordIds;
             return this;
         }
 
