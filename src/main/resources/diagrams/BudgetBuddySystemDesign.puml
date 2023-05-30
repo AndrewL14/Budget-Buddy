@@ -1,0 +1,114 @@
+@startuml
+title Activities Diagram
+
+package Activities {
+    class CreateLedgerActivity {
+        - LedgerDao ledgerDao
+        + CreateLedgerActivity(LedgerDao ledgerDao)
+        + execute(final CreateLedgerRequest request) : CreateLedgerResponse
+    }
+    class GetLedgerActivity {
+        - LedgerDao ledgerDao
+        + GetLedgerActivity(LedgerDao ledgerDao)
+        + execute(final GetLedgerRequest request) : GetLedgerResponse
+    }
+    class UpdateLedgerActivity {
+        - LedgerDao ledgerDao
+        + UpdateLedgerActivity(LedgerDao ledgerDao)
+        + execute(final UpdateLedgerRequest request) : UpdateLedgerResponse
+    }
+    class DeleteLedgerActivity {
+        - LedgerDao ledgerDao
+        + DeleteLedgerActivity(LedgerDao ledgerDao)
+        + execute(final DeleteLedgerRequest request) : DeleteLedgerResponse
+    }
+    class CreateIncomeActivity {
+        - LedgerDao ledgerDao
+        + CreateIncomeActivity(LedgerDao ledgerDao)
+        + execute(final CreateIncomeRequest request) : CreateIncomeResponse
+    }
+    class GetIncomeActivity {
+        - LedgerDao ledgerDao
+        + GetIncomeActivity(LedgerDao ledgerDao)
+        + execute(final GetIncomeRequest request) : GetIncomeResponse
+    }
+    class UpdateIncomeActivity {
+        -  LedgerDao ledgerDao
+        + UpdateIncomeActivity(LedgerDao ledgerDao)
+        + execute(final UpdateIncomeRequest request) : UpdateIncomeResponse
+    }
+    class DeleteIncomeActivity {
+        - LedgerDao ledgerDao
+        + DeleteIncomeActivity(LedgerDao ledgerDao)
+        + execute(final DeleteIncomeRequest request) : DeleteIncomeResponse
+    }
+    class DeleteAllIncomeActivity {
+        - LedgerDao ledgerDao
+        + DeleteAllIncomeActivity(LedgerDao ledgerDao)
+        + execute(final DeleteAllIncomeRequest request) : DeleteAllIncomeResponse
+    }
+    class CreateExpenseActivity {
+        - LedgerDao ledgerDao
+        + CreateExpenseActivity(LedgerDao ledgerDao)
+        + execute(final CreateExpenseRequest request) : CreateExpenseResponse
+    }
+    class GetExpenseActivity {
+        - LedgerDao ledgerDao
+        + GetExpenseActivity(LedgerDao ledgerDao)
+        + execute(final GetExpenseRequest request) : GetExpenseResponse
+    }
+    class UpdateExpenseActivity {
+        - LedgerDao ledgerDao
+        + UpdateExpenseActivity(LedgerDao ledgerDao)
+        + execute(final UpdateExpenseRequest request) : UpdateExpenseResponse
+    }
+    class DeleteExpenseActivity {
+        - LedgerDao ledgerDao
+        + DeleteExpenseActivity(LedgerDao ledgerDao)
+        + execute(final DeleteExpenseRequest request) : DeleteExpenseResponse
+    }
+    class DeleteAllExpenseActivity {
+        - LedgerDao ledgerDao
+        + DeleteAllExpenseActivity(LedgerDao ledgerDao)
+        + execute(DeleteAllExpenseRequest request) : DeleteAllExpenseResponse
+    }
+}
+package dynamoDB.Models {
+        class Ledger {
+            - @DynamoDBHashKey ledgerId : String
+            - @DynamoDBRangeKey recordId : String (well be placed as the maps key)
+            - incomes : HashMap<String, Income>
+            - expenses : HashMap<String, Expense>
+            - totalBalanceBeforeExpense : double
+            - totalBalanceAfterExpense : double
+        }
+        class Income {
+            - incomeSource : String
+            - amount : double
+            - dueDate : String
+            - given : boolean
+            - notes : String
+        }
+        class Expense {
+            - ExpenseName : String
+            - amount : double
+            - dueDate : String
+            - paid : boolean
+            - notes : String
+        }
+    }
+package Dao {
+    class LedgerDao {
+        - DynamoDbMapper dynamoDbMapper
+        + LedgerDao(DynamoDbMapper dynamoDbMapper)
+        + CreateLedger(Ledger) : Ledger
+        + GetLedger(String ledgerId) : Ledger
+        + GetIncomeFromLedger(String ledgerId, String recordId) : Income
+        + GetExpenseFromLedger(String ledgerId, String recordId) : Expense
+        + UpdateLedger(String ledgerId, String firstName, String lastName) : Ledger
+        + UpdateIncomeOrExpenseFromLedger(String ledgerId, Ledger ledger)  : Ledger
+        + DeleteLedger(String ledgerId)
+    }
+}
+
+@enduml

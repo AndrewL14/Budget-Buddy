@@ -11,6 +11,7 @@
                   "amount": {"N": "1000"},
                   "incomeSource": {"S": "Salary"},
                   "dueDate": {"S": "2022-04-01"},
+                  "given": {"BOOL":  true},
                   "note": {"S": "Monthly income"}
                 }
               },
@@ -19,6 +20,7 @@
                   "amount": {"N": "500"},
                   "incomeSource": {"S": "Freelance work"},
                   "dueDate": {"S": "2022-04-15"},
+                  "given": {"BOOL":  true},
                   "note": {"S": "Extra income"}
                 }
               }
